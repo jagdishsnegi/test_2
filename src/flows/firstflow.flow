@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>firstflow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>firstflow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Support_Tier_Config</name>
+        <label>Get Support Tier Config</label>
+        <locationX>69</locationX>
+        <locationY>225</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Gold_Accounts</targetReference>
+        </connector>
+        <filters>
+            <field>MasterLabel</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>gold</stringValue>
+            </value>
+        </filters>
+        <object>Support_Tier__mdt</object>
+        <sortField>DeveloperName</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Gold_Accounts</name>
+        <label>Update Gold Accounts</label>
+        <locationX>261</locationX>
+        <locationY>211</locationY>
+        <filters>
+            <field>Total_Spending__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>Get_Support_Tier_Config.Minimum_Spending__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Support_Tier__c</field>
+            <value>
+                <stringValue>Gold</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <startElementReference>Get_Support_Tier_Config</startElementReference>
+    <status>Active</status>
+</Flow>
