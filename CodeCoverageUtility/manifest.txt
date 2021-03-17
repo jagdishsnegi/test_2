@@ -1,0 +1,2 @@
+Main-Class: com.mirketaInc.DeployCodeCoverage.GenerateCodeCoverageReport
+Class-Path: lib/commons-collections4-4.1.jar lib/commons-logging-1.2.jar lib/force-wsc-44.0.0.jar lib/log4j-1.2.17.jar lib/metadata.jar lib/partner.jar lib/poi-3.17.jar lib/poi-ooxml-3.17.jar lib/poi-ooxml-schemas-3.17.jar lib/xmlbeans-2.6.0.jar lib/force-metadata-api-44.0.0.jar lib/force-partner-api-44.0.0.jar
